@@ -1,11 +1,12 @@
 name: city_picker
 description: A new flutter plugin project.
 version: 0.0.1
-author:
-homepage:
+author: sanfan.hx
+homepage: https://github.com/alibaba/flutter-go
 
 environment:
   sdk: ">=2.0.0-dev.68.0 <3.0.0"
+
 
 dependencies:
   flutter:
