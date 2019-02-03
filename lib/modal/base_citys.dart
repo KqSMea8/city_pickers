@@ -1,31 +1,13 @@
 import '../meta/province.dart';
 import '../src/util.dart';
-
+import 'package:city_picker/modal/point.dart';
 import 'package:lpinyin/lpinyin.dart';
 
-const List<Point> EmptyArray = [];
-const NoName = "";
-int index = 0;
-const rootCode = 100000;
+
+
+
 /// tree point
-class Point {
-  int code;
-  List<Point> child = EmptyArray;
-  int depth;
-  String letter;
-  String name = NoName;
-  Point({this.code = 0, this.child, this.depth, this.letter, this.name});
 
-  addChild(Point node) {
-    this.child.add(node);
-  }
-
-  @override
-  String toString() {
-    // TODO: implement toString
-    return "{code: $code, name: $name, letter: $letter, child: Array & length = ${child == null ? 0 : child.length}";
-  }
-}
 
 class CityTree {
   /// 元数据
@@ -82,7 +64,6 @@ class CityTree {
       String key = keys[i];
       Map<String, dynamic> child = citysData[key];
       if (child.containsKey(_code)) {
-        print("this is contain");
         // 当前元素的父key在省份内
         if (provinceData.containsKey(key)) {
           return int.parse(key);
@@ -107,7 +88,6 @@ class CityTree {
   }
   /// 树的构建方法
   Point _buildTree(Point target, Map citys, Map meta) {
-    index++;
     if (citys == null || citys.isEmpty) {
       return target;
     } else {

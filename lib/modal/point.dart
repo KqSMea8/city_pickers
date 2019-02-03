@@ -7,15 +7,24 @@
  * tartget:  xxx
  */
 
-import 'package:flutter/material.dart';
+const List<Point> EmptyArray = [];
+const NoName = "";
 
-class Demo extends StatefulWidget {
-  _Demo createState() => _Demo();
-}
+class Point {
+  int code;
+  List<Point> child = EmptyArray;
+  int depth;
+  String letter;
+  String name = NoName;
+  Point({this.code = 0, this.child, this.depth, this.letter, this.name});
 
-class _Demo extends State<Demo> {
+  addChild(Point node) {
+    this.child.add(node);
+  }
 
-  Widget build(BuildContext context) {
-    return Container();
+  @override
+  String toString() {
+    // TODO: implement toString
+    return "{code: $code, name: $name, letter: $letter, child: Array & length = ${child == null ? 0 : child.length}";
   }
 }

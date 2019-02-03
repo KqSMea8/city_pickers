@@ -7,15 +7,18 @@
  * tartget:  xxx
  */
 
-import 'package:flutter/material.dart';
+class Result {
+  final String provinceId;
+  final String cityId;
+  final String areaId;
 
-class Demo extends StatefulWidget {
-  _Demo createState() => _Demo();
-}
-
-class _Demo extends State<Demo> {
-
-  Widget build(BuildContext context) {
-    return Container();
+  final String provinceName;
+  final String cityName;
+  final String areaName;
+  Result({this.provinceId, this.cityId, this.areaId, this.provinceName, this.cityName, this.areaName});
+  @override
+  String toString() {
+    // TODO: implement toString
+    return "{provinceName: $provinceName, provinceId: $provinceId, cityName: $cityName, cityId: $cityId, areaName: $areaName, areaId: $areaId}";
   }
 }

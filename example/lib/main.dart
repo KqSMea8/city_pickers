@@ -25,7 +25,7 @@ class Main extends StatefulWidget {
 }
 
 class _MainState extends State<Main> {
-  String _platformVersion = 'Unknown';
+  Result _result;
 
   @override
   void initState() {
@@ -36,11 +36,16 @@ class _MainState extends State<Main> {
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
   }
-  show(context) {
-    CityPicker.showCityPicker(
-        context: context,
-        locationCode: '640221'
+  show(context) async {
+    Result temp  = await CityPicker.showCityPicker(
+      context: context,
+      locationCode: '640221',
+      height: 400,
     );
+    setState(() {
+      _result = temp;
+    });
+
   }
   @override
   Widget build(BuildContext context) {
@@ -50,11 +55,16 @@ class _MainState extends State<Main> {
           title: const Text('Plugin example app'),
         ),
         body: Center(
-          child: RaisedButton(
-            onPressed: () {this.show(context);
-            },
-            child: Text("slect"),
-          ),
+          child: Column(
+            children: <Widget>[
+              Text("result: ${_result.toString()}"),
+              RaisedButton(
+                onPressed: () {this.show(context);
+                },
+                child: Text("slect"),
+              ),
+            ],
+          )
         ),
       ),
     );

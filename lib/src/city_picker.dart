@@ -1,26 +1,26 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
-import 'src/base.dart';
-// CityPicker.showPicker(
-//    location: '640202',
-//    mode: PickerMode.p || PickerMode.pc || PickerMode.pca
-//    onConfirm: (CityDate cityDate) {
-//    },
-//
-// );
+import 'base.dart';
+/// 期望用法
+/// await CityPicker.showPicker(
+///   location: '640202',
+///   height,
+/// );
 class CityPicker {
 
   static Future showCityPicker({
     BuildContext context,
     String locationCode,
+    double height = 400,
     Function onChangeData,
   }) {
-    print("locationCode in cityPicker: $locationCode");
+//    print("locationCode in cityPicker: $locationCode");
     return Navigator.of(context, rootNavigator: true).push(
       new _CityPickerRoute(
           theme: Theme.of(context, shadowThemeOnly: true),
           locationCode: locationCode,
+          height: height,
           barrierLabel: MaterialLocalizations.of(context).modalBarrierDismissLabel,
       ),
     );
@@ -32,9 +32,10 @@ class _CityPickerRoute<T> extends PopupRoute<T> {
   final String barrierLabel;
   final String locationCode;
   final Function onChangeData;
-
+  final double height;
   _CityPickerRoute({
     this.theme,
+    this.height,
     this.barrierLabel,
     this.onChangeData,
     this.locationCode
@@ -68,6 +69,7 @@ class _CityPickerRoute<T> extends PopupRoute<T> {
       context: context,
       child: _CityPickerWidget(
         route: this,
+        height: this.height,
         locationCode: locationCode
       )
     );
@@ -82,10 +84,12 @@ class _CityPickerWidget extends StatefulWidget {
 
   final _CityPickerRoute route;
   final String locationCode;
+  final double height;
   final Function onChangeData;
 
   _CityPickerWidget(
       {Key key,
+        this.height,
         this.locationCode,
         this.onChangeData,
         @required this.route});
@@ -107,6 +111,7 @@ class _CityPickerState extends State<_CityPickerWidget> {
           return BaseView(
               progress: widget.route.animation.value,
               locationCode: widget.locationCode,
+              height: widget.height,
               onChangeData: widget.onChangeData,
           );
         },
