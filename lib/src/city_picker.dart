@@ -3,23 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'src/base.dart';
 // CityPicker.showPicker(
-//    location: '北京',
-//    style: {}
-//    mode: PickerMode.p || PickerMode.pc || PickerMode.pcc || PickerMode.pcct.
-//    onChangeData: (CityDate cityDate) {
+//    location: '640202',
+//    mode: PickerMode.p || PickerMode.pc || PickerMode.pca
+//    onConfirm: (CityDate cityDate) {
 //    },
 //
 // );
 class CityPicker {
 
-  static void showCityPicker({
+  static Future showCityPicker({
     BuildContext context,
     String locationCode,
     Function onChangeData,
   }) {
     print("locationCode in cityPicker: $locationCode");
-    Navigator.push(
-      context,
+    return Navigator.of(context, rootNavigator: true).push(
       new _CityPickerRoute(
           theme: Theme.of(context, shadowThemeOnly: true),
           locationCode: locationCode,
