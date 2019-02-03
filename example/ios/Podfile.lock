@@ -1,0 +1,22 @@
+PODS:
+  - city_picker (0.0.1):
+    - Flutter
+  - Flutter (1.0.0)
+
+DEPENDENCIES:
+  - city_picker (from `.symlinks/plugins/city_picker/ios`)
+  - Flutter (from `.symlinks/flutter/ios`)
+
+EXTERNAL SOURCES:
+  city_picker:
+    :path: ".symlinks/plugins/city_picker/ios"
+  Flutter:
+    :path: ".symlinks/flutter/ios"
+
+SPEC CHECKSUMS:
+  city_picker: 7d308f7b7e4b8fe03e9d91fe6ddea671b7614cd0
+  Flutter: 9d0fac939486c9aba2809b7982dfdbb47a7b0296
+
+PODFILE CHECKSUM: aff02bfeed411c636180d6812254b2daeea14d09
+
+COCOAPODS: 1.5.3
